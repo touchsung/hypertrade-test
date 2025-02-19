@@ -36,6 +36,12 @@ This will:
 - Backend API: http://localhost:8000
 - API Documentation: http://localhost:8000/docs
 
+3. Stop the application:
+
+```bash
+docker-compose down -v
+```
+
 ## Development
 
 The project uses volume mounts for both frontend and backend, enabling hot-reload during development. Any changes made to the source code will automatically reflect in the running application.
