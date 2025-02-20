@@ -1,50 +1,112 @@
-# React + TypeScript + Vite
+# Project Setup Instructions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Prerequisites
 
-Currently, two official plugins are available:
+- Node.js (v20 or later)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Yarn package manager
 
-## Expanding the ESLint configuration
+- Docker (optional, for containerized deployment)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation
 
-- Configure the top-level `parserOptions` property like this:
+1. **Install dependencies**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+yarn install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. **Environment Setup**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Create a `.env` file in the root directory with the following content:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+VITE_API_URL=<your-api-url>
+```
+
+3. **Start Development Server**
+
+```bash
+yarn dev
+```
+
+This will start the development server, typically at `http://localhost:5173`
+
+## Building for Production
+
+1. **Create Production Build**
+
+```bash
+yarn build
+```
+
+This will create optimized production files in the `dist` directory.
+
+2. **Preview Production Build**
+
+```bash
+yarn preview
+```
+
+## Docker Deployment
+
+1. **Build Docker Image**
+
+```bash
+docker build -t your-app-name .
+```
+
+2. **Run Docker Container**
+
+```bash
+docker run -p 80:80 your-app-name
+```
+
+The application will be available at `http://localhost`
+
+## Available Scripts
+
+```json
+  "scripts": {
+  "dev": "vite",
+  "build": "tsc -b && vite build",
+  "lint": "eslint .",
+  "preview": "vite preview",
+  "test": "vitest"
+  }
+```
+
+- `yarn dev`: Start development server
+
+- `yarn build`: Create production build
+
+- `yarn lint`: Run ESLint
+
+- `yarn preview`: Preview produ
+- `yarn test`: Run tests with Vitestction build
+
+## Project Structure
+
+- `/src`: Source code
+
+  - `/components`: React components
+
+  - `/service`: API services
+
+  - `/types`: TypeScript type definitions
+
+- `/public`: Static assets
+
+- `/dist`: Production build output (generated)
+
+## Notes
+
+- The project uses Tailwind CSS for styling
+
+- React Query is used for server state management
+
+- TypeScript is configured for type safety
+
+- ESLint is set up for code linting
+
+- Vitest is configured for testing

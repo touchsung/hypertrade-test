@@ -82,8 +82,8 @@ function App() {
     );
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <section className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gray-100">
+      <section className="container mx-auto px-4 py-8 flex flex-col gap-8">
         <div className="flex justify-between items-center">
           <Header
             title="Products"
@@ -91,23 +91,23 @@ function App() {
           />
           <button
             onClick={handleAddProduct}
-            className="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center gap-2"
+            className="px-5 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2"
           >
             <FiPlus className="h-5 w-5" />
             Add Product
           </button>
         </div>
-
-        <ProductTable
-          products={products?.items ?? []}
-          onEdit={handleEditProduct}
-          onDelete={handleDeleteProduct}
-        />
         <Pagination
           currentPage={page}
           totalPages={products?.total_pages ?? 1}
           onPageChange={setPage}
         />
+        <ProductTable
+          products={products?.items ?? []}
+          onEdit={handleEditProduct}
+          onDelete={handleDeleteProduct}
+        />
+
         <ProductModal
           isOpen={isModalOpen}
           onClose={handleModalClose}

@@ -13,27 +13,27 @@ export function ProductTable({
   onDelete,
 }: ProductTableProps) {
   return (
-    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+    <section className="bg-white rounded-xl shadow-lg overflow-hidden">
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                 Name
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                 SKU
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
                 Price
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
                 Stock
               </th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -42,7 +42,7 @@ export function ProductTable({
             {products?.map((product) => (
               <tr
                 key={product.id}
-                className="hover:bg-gray-50 transition-colors duration-200"
+                className="hover:bg-gray-50/50 transition-colors duration-200"
               >
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm font-medium text-gray-900">
@@ -74,17 +74,17 @@ export function ProductTable({
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <button className="text-blue-600 hover:text-blue-900 mr-3 inline-flex items-center gap-1">
-                    <FiEdit2
-                      className="h-4 w-4"
-                      onClick={() => onEdit(product.id)}
-                    />
+                  <button
+                    className="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50 transition-all mr-2"
+                    onClick={() => onEdit(product.id)}
+                  >
+                    <FiEdit2 className="h-4 w-4" />
                   </button>
-                  <button className="text-red-600 hover:text-red-900 inline-flex items-center gap-1">
-                    <FiTrash2
-                      className="h-4 w-4"
-                      onClick={() => onDelete(product.id)}
-                    />
+                  <button
+                    className="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50 transition-all"
+                    onClick={() => onDelete(product.id)}
+                  >
+                    <FiTrash2 className="h-4 w-4" />
                   </button>
                 </td>
               </tr>
@@ -92,6 +92,6 @@ export function ProductTable({
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
   );
 }
