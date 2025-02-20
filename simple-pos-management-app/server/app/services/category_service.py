@@ -8,6 +8,10 @@ def get_categories(db: Session) -> List[CategoryModel]:
     return db.query(CategoryModel).all()
 
 
+def get_category_by_name(db: Session, name: str) -> Optional[CategoryModel]:
+    return db.query(CategoryModel).filter(CategoryModel.name == name).first()
+
+
 def create_category(db: Session, category: CategoryCreate) -> CategoryModel:
     db_category = CategoryModel(**category.model_dump())
     db.add(db_category)

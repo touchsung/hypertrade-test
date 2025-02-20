@@ -78,13 +78,13 @@ export function ProductTable({
                     className="text-blue-600 hover:text-blue-800 p-2 rounded-lg hover:bg-blue-50 transition-all mr-2"
                     onClick={() => onEdit(product.id)}
                   >
-                    <FiEdit2 className="h-4 w-4" />
+                    <FiEdit2 className="h-4 w-4" data-cy="edit-button" />
                   </button>
                   <button
                     className="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50 transition-all"
                     onClick={() => onDelete(product.id)}
                   >
-                    <FiTrash2 className="h-4 w-4" />
+                    <FiTrash2 className="h-4 w-4" data-cy="delete-button" />
                   </button>
                 </td>
               </tr>

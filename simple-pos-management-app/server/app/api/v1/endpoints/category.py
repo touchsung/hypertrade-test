@@ -20,6 +20,11 @@ async def create_category(
     category: CategoryCreate,
     db: Session = Depends(get_db),
 ):
+    existing_category = category_service.get_category_by_name(db, category.name)
+    if existing_category:
+        raise HTTPException(
+            status_code=400, detail="Category with this name already exists"
+        )
     return category_service.create_category(db, category)
 
 

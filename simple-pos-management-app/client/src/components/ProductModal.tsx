@@ -3,6 +3,7 @@ import { Product, ProductCreate } from "../types/product";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCategories, createCategory } from "../service/category";
 import { useState } from "react";
+import { AxiosError } from "axios";
 
 interface ProductModalProps {
   isOpen: boolean;
@@ -51,7 +52,10 @@ export function ProductModal({
       await queryClient.invalidateQueries({ queryKey: ["categories"] });
       setIsNewCategoryDialogOpen(false);
     } catch (error) {
-      console.error("Failed to create category:", error);
+      if (error instanceof AxiosError) {
+        console.error("Failed to create category:", error);
+        alert(error.response?.data?.detail || "Failed to create category");
+      }
     }
   };
 
@@ -226,7 +230,7 @@ export function ProductModal({
                   type="submit"
                   className="px-6 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors"
                 >
-                  {product ? "Save Changes" : "Add Product"}
+                  Submit
                 </button>
               </div>
             </form>

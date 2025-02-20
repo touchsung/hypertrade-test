@@ -13,6 +13,16 @@ def get_products(
     return products, total
 
 
+def get_product_by_name_and_category(
+    db: Session, name: str, category_id: int
+) -> Optional[ProductModel]:
+    return (
+        db.query(ProductModel)
+        .filter(ProductModel.name == name, ProductModel.category_id == category_id)
+        .first()
+    )
+
+
 def create_product(db: Session, product: ProductCreate) -> ProductModel:
     db_product = ProductModel(**product.model_dump())
     db.add(db_product)

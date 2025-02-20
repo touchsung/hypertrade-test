@@ -72,7 +72,9 @@ The application will be available at `http://localhost`
   "build": "tsc -b && vite build",
   "lint": "eslint .",
   "preview": "vite preview",
-  "test": "vitest"
+  "test": "vitest",
+  "cypress:open": "cypress open",
+  "cypress:run": "cypress run"
   }
 ```
 

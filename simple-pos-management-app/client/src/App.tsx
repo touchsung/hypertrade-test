@@ -17,6 +17,7 @@ import {
 } from "./service/product";
 import { ProductModal } from "./components/ProductModal";
 import { FiPlus } from "react-icons/fi";
+import { AxiosError } from "axios";
 
 function App() {
   const [page, setPage] = useState(1);
@@ -71,7 +72,10 @@ function App() {
       refetch();
       handleModalClose();
     } catch (error) {
-      console.error("Failed to save product:", error);
+      if (error instanceof AxiosError) {
+        console.error("Failed to create category:", error);
+        alert(error.response?.data?.detail || "Failed to save product");
+      }
     }
   };
 

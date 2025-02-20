@@ -25,6 +25,15 @@ async def create_product(
     product: ProductCreate,
     db: Session = Depends(get_db),
 ):
+    existing_product = product_service.get_product_by_name_and_category(
+        db, product.name, product.category_id
+    )
+    if existing_product:
+        raise HTTPException(
+            status_code=400,
+            detail="Product with this name already exists in the same category",
+        )
+
     return product_service.create_product(db, product)
 
 
