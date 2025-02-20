@@ -111,7 +111,7 @@ describe("ProductModal", () => {
     });
 
     // Submit the form
-    const submitButton = screen.getByRole("button", { name: /add product/i });
+    const submitButton = screen.getByRole("button", { name: /submit/i });
 
     fireEvent.submit(submitButton.closest("form")!);
 
